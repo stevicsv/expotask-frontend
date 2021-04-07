@@ -1,6 +1,7 @@
 <template>
   <div class="login">
     <div v-if="user">{{ user.name }}</div>
+    {{ isLoggedIn }}
 
     <form @submit.prevent="login">
       <input type="email" v-model="form.email" />
@@ -13,12 +14,14 @@
 </template>
 
 <script>
-import { defineComponent, computed, reactive } from 'vue';
+import { defineComponent, reactive } from 'vue';
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   setup() {
     const store = useStore();
+    const router = useRouter();
 
     const form = reactive({
       email: '',
@@ -29,14 +32,17 @@ export default defineComponent({
     const login = async () => {
       try {
         await store.dispatch('login', form);
+        router.push({ name: 'Dashboard' });
       } catch ({ errors }) {
         form.errors = errors;
+      } finally {
+        form.email = '';
+        form.password = '';
       }
     };
 
     return {
       form,
-      user: computed(() => store.state.user),
       login,
     };
   },

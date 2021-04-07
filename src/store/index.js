@@ -5,6 +5,11 @@ export default createStore({
   state: {
     user: JSON.parse(localStorage.getItem('user')) || null,
   },
+  getters: {
+    isLoggedIn(state) {
+      return !!state.user;
+    },
+  },
   mutations: {
     SET_USER(state, user) {
       state.user = user;
