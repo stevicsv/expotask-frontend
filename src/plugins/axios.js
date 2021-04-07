@@ -1,4 +1,5 @@
 import axios from 'axios';
+import router from '@/router';
 
 const API_VERSION = 'v1';
 const BASE_URL = `http://localhost:8080/api/${API_VERSION}`;
@@ -14,7 +15,15 @@ const instance = axios.create({
 
 instance.interceptors.response.use(
   (response) => response,
-  (error) => Promise.reject(error.response.data),
+  (error) => {
+    // Handle unauthenticated response status from request.
+    if (error.response.status === 401) {
+      localStorage.removeItem('user');
+      router.push({ name: 'Login' });
+    }
+
+    return Promise.reject(error.response.data);
+  },
 );
 
 export default instance;
