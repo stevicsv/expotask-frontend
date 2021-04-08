@@ -1,0 +1,13 @@
+@use '../abstracts/breakpoints';
+
+@mixin mobile {
+  @media screen and (max-width: breakpoints.$mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: breakpoints.$tablet) {
+    @content;
+  }
+}
