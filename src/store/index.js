@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import { createSession, login } from '@/repositories/auth';
+import { createSession, login, logout } from '@/repositories/auth';
 
 export default createStore({
   state: {
@@ -22,6 +22,12 @@ export default createStore({
       const { data } = resp.data;
       localStorage.setItem('user', JSON.stringify(data));
       commit('SET_USER', data);
+    },
+
+    async logout({ commit }) {
+      await logout();
+      localStorage.removeItem('user');
+      commit('SET_USER', null);
     },
   },
 });
