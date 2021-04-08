@@ -1,8 +1,5 @@
 <template>
   <div class="login">
-    <div v-if="user">{{ user.name }}</div>
-    {{ isLoggedIn }}
-
     <form @submit.prevent="login">
       <input type="email" v-model="form.email" />
       <span v-if="form.errors.email">{{ form.errors.email[0] }}</span>
