@@ -1,0 +1,64 @@
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2.25rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  line-height: 2.125rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+}
+
+h4 {
+  font-size: 1rem;
+  line-height: 1.1875rem;
+}
+
+p {
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+
+p.is-bolder {
+  font-size: 0.875rem;
+  line-height: 1rem;
+  font-weight: medium;
+}
+
+a {
+  font-size: 0.875rem;
+  line-height: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:visited {
+    color: currentColor;
+  }
+}
+
+span {
+  font-size: 0.84375rem;
+  line-height: 1.0625rem;
+}
+
+small {
+  font-size: 0.75rem;
+  line-height: 0.875rem;
+}
+
+small.is-bolder {
+  font-size: 0.75rem;
+  line-height: 0.875rem;
+  font-weight: medium;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 1.1875rem;
+  font-weight: 500;
+}

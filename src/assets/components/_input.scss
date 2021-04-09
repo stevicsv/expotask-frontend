@@ -1,0 +1,15 @@
+@use '../abstracts/colors' as *;
+
+input {
+  font-size: 0.875em;
+  padding: 0.5rem 0.75rem;
+  background-color: #fff;
+  border: 0.0625rem solid $gray-light-5;
+  border-radius: 0.25rem;
+
+  &:focus {
+    outline: none;
+    border: 0.0625rem solid $primary;
+    box-shadow: 0 0 0 0.1875rem rgba(244, 107, 62, 0.4);
+  }
+}
