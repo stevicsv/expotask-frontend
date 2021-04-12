@@ -79,12 +79,20 @@ $borderRadius: 0.25rem;
       }
 
       .dropdown {
+        &-trigger {
+          padding: 0;
+          margin-right: 10px;
+        }
+      }
+      /*
+      .dropdown {
         position: absolute;
         top: 6.15rem;
         right: 4rem;
         border-radius: $borderRadius;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
       }
+      */
     }
   }
 }
