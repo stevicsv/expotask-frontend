@@ -5,6 +5,7 @@ import store from '@/store';
 // Page imports
 import Login from '@/pages/Login.vue';
 import Dashboard from '@/pages/Dashboard.vue';
+import Teams from '@/pages/Teams.vue';
 
 // Middleware imports
 import auth from './middlewares/auth';
@@ -25,12 +26,23 @@ const routes = [
     name: 'Dashboard',
     meta: {
       middleware: auth,
+      layout: 'sidebar',
+    },
+  },
+  {
+    path: '/teams',
+    component: Teams,
+    name: 'Teams',
+    meta: {
+      middleware: auth,
+      layout: 'sidebar',
     },
   },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
+  linkExactActiveClass: 'is-active',
   routes,
 });
 
