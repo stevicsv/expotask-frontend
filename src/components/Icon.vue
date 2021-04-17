@@ -14,6 +14,20 @@
       fill="currentFill"
     />
   </svg>
+  <svg
+    v-if="name === 'search'"
+    class="icon"
+    id="search"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M6.005 2.002a4.003 4.003 0 100 8.007 4.003 4.003 0 000-8.007zM0 6.005a6.004 6.004 0 1110.898 3.479l4.821 4.82a1 1 0 01-1.415 1.415l-4.82-4.82A6.004 6.004 0 010 6.006z"
+      fill="currentFill"
+    />
+  </svg>
 </template>
 
 <script>
