@@ -28,6 +28,54 @@
       fill="currentFill"
     />
   </svg>
+  <svg
+    v-if="name === 'more'"
+    class="icon"
+    id="more"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
+  >
+    <path
+      d="M5.2 7.6a1.6 1.6 0 11-3.2 0 1.6 1.6 0 013.2 0zm4.8 0a1.6 1.6 0 11-3.2 0 1.6 1.6 0 013.2 0zm3.2 1.6a1.6 1.6 0 100-3.2 1.6 1.6 0 000 3.2z"
+      fill="currentFill"
+    />
+  </svg>
+  <svg
+    v-if="name === 'left'"
+    class="icon"
+    id="left"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M2.4 2.4a.8.8 0 01.8.8v9.6a.8.8 0 11-1.6 0V3.2a.8.8 0 01.8-.8zm6.165 2.634a.8.8 0 010 1.132L7.531 7.2H13.6a.8.8 0 110 1.6H7.53l1.035 1.034a.8.8 0 01-1.131 1.132l-2.4-2.4a.8.8 0 010-1.132l2.4-2.4a.8.8 0 011.131 0z"
+      fill="currentFill"
+    />
+  </svg>
+  <svg
+    v-if="name === 'settings'"
+    class="icon"
+    id="settings"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
+  >
+    <path
+      stroke="currentFill"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="1.333"
+      d="M9.117 2.878c-.284-1.17-1.95-1.17-2.234 0a1.149 1.149 0 01-1.714.71c-1.03-.627-2.207.551-1.58 1.58a1.15 1.15 0 01-.711 1.715c-1.17.284-1.17 1.95 0 2.234a1.15 1.15 0 01.71 1.714c-.627 1.03.551 2.207 1.58 1.58a1.148 1.148 0 011.715.711c.284 1.17 1.95 1.17 2.234 0a1.15 1.15 0 011.714-.71c1.03.627 2.207-.551 1.58-1.58a1.148 1.148 0 01.711-1.715c1.17-.284 1.17-1.95 0-2.234a1.15 1.15 0 01-.71-1.714c.627-1.03-.551-2.207-1.58-1.58a1.15 1.15 0 01-1.715-.711z"
+    />
+    <path
+      stroke="currentFill"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="1.333"
+      d="M9.414 9.414a2 2 0 10-2.828-2.828 2 2 0 002.828 2.828z"
+    />
+  </svg>
 </template>
 
 <script>
@@ -37,3 +85,10 @@ export default defineComponent({
   props: ['name'],
 });
 </script>
+
+<style lang="scss">
+#settings {
+  fill: transparent;
+  stroke: #000;
+}
+</style>

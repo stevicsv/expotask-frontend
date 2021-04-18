@@ -40,7 +40,8 @@ $borderRadius: 0.25rem;
   }
 
   &-item {
-    display: block;
+    display: flex;
+    align-items: center;
     color: $gray-dark-5;
     font-size: 1rem;
     line-height: 1.1875rem;
@@ -50,6 +51,10 @@ $borderRadius: 0.25rem;
     transition: all 350ms cubic-bezier(0.075, 0.82, 0.165, 1);
     cursor: pointer;
 
+    svg {
+      margin-right: 0.5rem;
+    }
+
     &:hover {
       background-color: $gray-light-15;
     }
@@ -57,6 +62,14 @@ $borderRadius: 0.25rem;
     &:active {
       background-color: #fef8f6;
       color: $primary;
+
+      svg#left {
+        fill: $primary !important;
+      }
+
+      svg#settings {
+        stroke: $primary !important;
+      }
     }
   }
 }
