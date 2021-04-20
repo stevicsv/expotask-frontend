@@ -3,16 +3,16 @@
     <h3>Teams</h3>
 
     <div class="teams-container">
-      <div class="team-card">
+      <div class="team-card" v-for="(team, index) in teams.teams" :key="index">
         <div class="top">
           <div class="team-name">
             <img
               src="https://eu.ui-avatars.com/api/?name=D&background=cf000f&color=FFF"
               alt="team avatar"
             />
-            <h4>Daniel’s Managment Team</h4>
+            <h4>{{ team.name }}</h4>
           </div>
-          <Dropdown>
+          <Dropdown class="is-smaller">
             <template #trigger>
               <Icon name="more" />
             </template>
@@ -40,13 +40,26 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, reactive, onMounted } from 'vue';
+import getAllTeams from '@/repositories/team';
 
 import Icon from '@/components/Icon.vue';
 import { Dropdown, DropdownItem } from '@/components/Dropdown.vue';
 
 export default defineComponent({
   components: { Icon, Dropdown, DropdownItem },
-  setup() {},
+  setup() {
+    const teams = reactive({ teams: [] });
+
+    onMounted(async () => {
+      const res = await getAllTeams();
+      const { data } = res.data;
+      teams.teams = data;
+    });
+
+    return {
+      teams,
+    };
+  },
 });
 </script>
