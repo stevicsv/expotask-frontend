@@ -1,4 +1,8 @@
 <template>
+  <Modal title="Team Settings" v-if="modalVisible" @close="modalVisible = false">
+    Currently testing
+  </Modal>
+
   <div class="teams">
     <h3>Teams</h3>
 
@@ -20,7 +24,7 @@
               <DropdownItem>
                 <Icon name="left" />Left Team
               </DropdownItem>
-              <DropdownItem>
+              <DropdownItem @click="toggleModal">
                 <Icon name="settings" />Settings
               </DropdownItem>
             </template>
@@ -29,10 +33,16 @@
         <div class="bottom">
           <div class="members">
             <img src="https://eu.ui-avatars.com/api/?name=Austyn+Bernhard" alt="member avatar" />
-            <img src="https://eu.ui-avatars.com/api/?name=John+Doe&background=cf000f&color=fff" alt="member avatar" />
+            <img
+              src="https://eu.ui-avatars.com/api/?name=John+Doe&background=cf000f&color=fff"
+              alt="member avatar"
+            />
           </div>
 
-          <button class="is-primary">See More <Icon name="chevron down" /></button>
+          <button class="is-primary">
+            See More
+            <Icon name="chevron down" />
+          </button>
         </div>
       </div>
     </div>
@@ -40,16 +50,33 @@
 </template>
 
 <script>
-import { defineComponent, reactive, onMounted } from 'vue';
+import {
+  defineComponent,
+  reactive,
+  ref,
+  onMounted,
+} from 'vue';
+
 import getAllTeams from '@/repositories/team';
 
 import Icon from '@/components/Icon.vue';
 import { Dropdown, DropdownItem } from '@/components/Dropdown.vue';
+import Modal from '@/components/Modal.vue';
 
 export default defineComponent({
-  components: { Icon, Dropdown, DropdownItem },
+  components: {
+    Icon,
+    Dropdown,
+    DropdownItem,
+    Modal,
+  },
   setup() {
     const teams = reactive({ teams: [] });
+    const modalVisible = ref(false);
+
+    const toggleModal = () => {
+      modalVisible.value = !modalVisible.value;
+    };
 
     onMounted(async () => {
       const res = await getAllTeams();
@@ -59,6 +86,8 @@ export default defineComponent({
 
     return {
       teams,
+      modalVisible,
+      toggleModal,
     };
   },
 });
