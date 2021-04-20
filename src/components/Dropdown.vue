@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, provide } from 'vue';
 
 export const Dropdown = defineComponent({
   setup() {
@@ -21,6 +21,8 @@ export const Dropdown = defineComponent({
       visible.value = !visible.value;
     };
 
+    provide('toggle', toggle);
+
     return {
       visible,
       toggle,
@@ -29,8 +31,9 @@ export const Dropdown = defineComponent({
 });
 
 export const DropdownItem = {
+  inject: ['toggle'],
   render() {
-    return <div class="dropdown-item">{this.$slots.default()}</div>;
+    return <div class="dropdown-item" onClick={this.toggle}>{this.$slots.default()}</div>;
   },
 };
 
