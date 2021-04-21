@@ -86,7 +86,7 @@ export default defineComponent({
     const login = async () => {
       form.loading = true;
       try {
-        await store.dispatch('login', form);
+        await store.dispatch('auth/login', form);
         router.push({ name: 'Dashboard' });
       } catch ({ errors }) {
         form.errors = errors;
