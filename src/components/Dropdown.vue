@@ -30,6 +30,12 @@ export const Dropdown = defineComponent({
   },
 });
 
+export const DropdownGroup = {
+  render() {
+    return <div class="dropdown-group">{this.$slots.default()}</div>;
+  },
+};
+
 export const DropdownItem = {
   inject: ['toggle'],
   render() {

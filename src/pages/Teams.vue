@@ -1,6 +1,48 @@
 <template>
-  <Modal title="Team Settings" v-if="modalVisible" @close="modalVisible = false">
-    Currently testing
+  <Modal title="Membership" v-if="modalVisible" @close="modalVisible = false">
+    <div class="panel">
+      <div class="search-box">
+        <Icon name="search" />
+        <input placeholder="Search for members..."/>
+      </div>
+
+      <div class="members">
+        <div class="member">
+          <img alt="profile" src="https://eu.ui-avatars.com/api/?name=Mike+Doe&background=cf000f&color=FFF" />
+          <span>Mike Doe</span>
+        </div>
+
+        <div class="member">
+          <img alt="profile" src="https://eu.ui-avatars.com/api/?name=Daniel+Voziak&background=cf000f&color=FFF" />
+          <span>Daniel Voziak</span>
+        </div>
+
+        <div class="member">
+          <img alt="profile" src="https://eu.ui-avatars.com/api/?name=Daniel+Voziak&background=cf000f&color=FFF" />
+          <span>Daniel Voziak</span>
+        </div>
+
+        <div class="member">
+          <img alt="profile" src="https://eu.ui-avatars.com/api/?name=Daniel+Voziak&background=cf000f&color=FFF" />
+          <span>Daniel Voziak</span>
+        </div>
+
+        <div class="member">
+          <img alt="profile" src="https://eu.ui-avatars.com/api/?name=Daniel+Voziak&background=cf000f&color=FFF" />
+          <span>Daniel Voziak</span>
+        </div>
+
+        <div class="member">
+          <img alt="profile" src="https://eu.ui-avatars.com/api/?name=Daniel+Voziak&background=cf000f&color=FFF" />
+          <span>Daniel Voziak</span>
+        </div>
+
+        <div class="member">
+          <img alt="profile" src="https://eu.ui-avatars.com/api/?name=Daniel+Voziak&background=cf000f&color=FFF" />
+          <span>Daniel Voziak</span>
+        </div>
+      </div>
+    </div>
   </Modal>
 
   <div class="teams">
@@ -25,7 +67,7 @@
                 <Icon name="left" />Left Team
               </DropdownItem>
               <DropdownItem @click="toggleModal">
-                <Icon name="settings" />Settings
+                <Icon name="settings" />Membership
               </DropdownItem>
             </template>
           </Dropdown>

@@ -2,7 +2,7 @@
   <div class="modal-wrapper">
     <div class="modal">
       <div class="modal-title">
-        {{ title }}
+        <h4>{{ title }}</h4>
         <div class="modal-title-icon" @click="$emit('close')">
           <Icon name="close" />
         </div>

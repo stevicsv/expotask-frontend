@@ -4,6 +4,17 @@ $borderRadius: 0.25rem;
 
 .dropdown {
   position: relative;
+  
+  &-group {
+    width: 100%;
+    overflow: none;
+    z-index: 9;
+
+    &.is-secondary {
+      position: relative;
+      left: 100%;
+    }
+  }
 
   &-trigger {
     &:focus,
@@ -14,6 +25,8 @@ $borderRadius: 0.25rem;
   }
 
   &-menu {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     right: 0;
     top: 2.35rem;

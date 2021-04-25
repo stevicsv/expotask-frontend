@@ -1,6 +1,26 @@
-<template>Testing...</template>
+<template>
+  <Dropdown>
+    <template #trigger>
+      <h4>Click here</h4>
+    </template>
+    <template #menu>
+      <DropdownGroup>
+        <DropdownItem>Test</DropdownItem>
+      </DropdownGroup>
+      <DropdownGroup class="is-secondary">
+        <DropdownItem>Test</DropdownItem>
+      </DropdownGroup>
+    </template>
+  </Dropdown>
+</template>
 
 <script>
+import { defineComponent } from 'vue';
+import { Dropdown, DropdownGroup, DropdownItem } from '@/components/Dropdown.vue';
+
+export default defineComponent({
+  components: { Dropdown, DropdownGroup, DropdownItem },
+});
 </script>
 
 <style lang="scss">
