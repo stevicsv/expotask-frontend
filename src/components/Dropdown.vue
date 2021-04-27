@@ -3,45 +3,105 @@
     <button class="dropdown-trigger" @click="toggle">
       <slot name="trigger" />
     </button>
-    <div class="dropdown-menu" v-if="visible">
-      <slot name="menu" />
-      <span class="triangle"></span>
-    </div>
+    <transition name="show">
+      <div class="dropdown-menu" v-if="visible" v-click-away="close">
+        <slot name="menu" />
+
+        <transition-group
+          tag="div"
+          @enter="onEnter"
+          @appear="onAppear"
+          class="dropdown-wrapper"
+          :style="{ height: menuHeight }"
+          name="slide"
+          appear
+        >
+          <slot
+            name="multipleMenu"
+            :active="active"
+            :isActive="isActive"
+            :setActive="setActive"
+            :close="close"
+          />
+        </transition-group>
+
+        <span class="triangle"></span>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
-import { defineComponent, ref, provide } from 'vue';
+import {
+  defineComponent, h, reactive, toRefs,
+} from 'vue';
 
 export const Dropdown = defineComponent({
   setup() {
-    const visible = ref(false);
+    const state = reactive({
+      visible: false,
+      active: 'main',
+      menuHeight: null,
+      back: false,
+    });
 
     const toggle = () => {
-      visible.value = !visible.value;
+      state.visible = !state.visible;
     };
 
-    provide('toggle', toggle);
+    const close = () => {
+      state.visible = false;
+    };
+
+    const setActive = (name) => {
+      state.active = true;
+
+      if (name !== 'main') {
+        state.active = false;
+      }
+
+      state.active = name;
+    };
+
+    const isActive = (name) => state.active === name;
+
+    const onEnter = (element) => {
+      const { height } = getComputedStyle(element);
+      state.menuHeight = height;
+    };
+
+    const onAppear = (element) => {
+      if (state.menuHeight === null) {
+        if (element.id === 'main') {
+          const { height } = getComputedStyle(element);
+          state.menuHeight = height;
+        }
+      }
+    };
 
     return {
-      visible,
+      ...toRefs(state),
       toggle,
+      close,
+      setActive,
+      isActive,
+      onEnter,
+      onAppear,
     };
   },
 });
 
-export const DropdownGroup = {
-  render() {
-    return <div class="dropdown-group">{this.$slots.default()}</div>;
+export const DropdownGroup = defineComponent({
+  setup(_, { slots }) {
+    return () => h('div', { class: 'dropdown-group' }, slots.default());
   },
-};
+});
 
-export const DropdownItem = {
-  inject: ['toggle'],
-  render() {
-    return <div class="dropdown-item" onClick={this.toggle}>{this.$slots.default()}</div>;
+export const DropdownItem = defineComponent({
+  setup(_, { slots }) {
+    return () => h('div', { class: 'dropdown-item' }, slots.default());
   },
-};
+});
 
 export default Dropdown;
 </script>

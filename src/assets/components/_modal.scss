@@ -38,3 +38,23 @@
     }
   }
 }
+
+.slideIn-enter-active,
+.slideIn-leave-active {
+  transition: 200ms ease-in-out;
+}
+
+.slideIn-enter-from {
+  transform: translateY(-100px);
+  opacity: 0;
+}
+
+.slideIn-enter-to {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slideIn-leave-to {
+  transform: translateY(-100px);
+  opacity: 0;
+}

@@ -1,7 +1,7 @@
 @use '../abstracts/colors' as *;
 
 $borderRadius: 0.25rem;
-
+/*
 .dropdown {
   position: relative;
   
@@ -95,4 +95,205 @@ $borderRadius: 0.25rem;
       line-height: 1rem !important;
     }
   }
+}
+*/
+
+// .dropdown {
+//   position: relative;
+//   width: 300px;
+
+//   &-trigger {
+//     &:focus,
+//     &:active {
+//       border: 1px solid transparent;
+//       box-shadow: none;
+//     }
+//   }
+
+//   &-menu {
+//     display: flex;
+//     flex-direction: column;
+//     position: absolute;
+//     right: 0;
+//     top: 2.35rem;
+//     width: 240px;
+//     margin-top: 0.5rem;
+//     padding: 0.5rem;
+//     background-color: #fff;
+//     border: 1px solid $gray-200;
+//     border-radius: 0.5rem;
+//     box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1);
+
+//     .triangle {
+//       position: absolute;
+//       background-color: inherit;
+//       border: inherit;
+//       width: 16px;
+//       height: 16px;
+//       top: -8px;
+//       right: 10px;
+//       clip-path: polygon(0% 0%, 100% 100%, 100% 100%, 0% 100%);
+//       transform: rotate(135deg);
+//       border-radius: 0 0 0 0.25rem;
+//     }
+//   }
+
+//   &-transition {
+//     display: block;
+//     border-radius: 0.25rem;
+//     overflow: hidden;
+//     position: absolute;
+//     left: 0;
+//     width: auto;
+//     border: 1px solid #ccc;
+//     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+//     transition: all 200ms ease-in-out;
+//   }
+
+//   &-item {
+//     display: flex;
+//     align-items: center;
+//     color: $black;
+//     font-size: 1rem;
+//     line-height: 1.1875rem;
+//     font-weight: 500;
+//     padding: 0.5rem 0.75rem;
+//     border-radius: $borderRadius;
+//     transition: all 350ms cubic-bezier(0.075, 0.82, 0.165, 1);
+//     cursor: pointer;
+
+//     &:hover {
+//       background-color: $gray-200;
+//     }
+//   }
+
+//   &-group {
+//     background: transparent;
+//     padding: 0.5rem;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 300px;
+//     transition: all 400ms ease-in-out;
+//   }
+// }
+
+// .dropdown.is-smaller {
+//   .dropdown-menu {
+//     .dropdown-item {
+//       font-size: .875rem !important;
+//       line-height: 1rem !important;
+//     }
+//   }
+// }
+
+.dropdown {
+  position: relative;
+
+  &-trigger {
+    &:focus,
+    &:active {
+      border: 1px solid transparent;
+      box-shadow: none;
+    }
+  }
+
+  &-menu {
+    position: absolute;
+    left: 0;
+    top: 3rem;
+    width: 300px;
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid $gray-200;
+    border-radius: 0.375rem;
+
+    .triangle {
+      position: absolute;
+      background-color: inherit;
+      border: inherit;
+      width: 16px;
+      height: 16px;
+      top: -8px;
+      left: 12px;
+      clip-path: polygon(0% 0%, 100% 100%, 100% 100%, 0% 100%);
+      transform: rotate(135deg);
+      border-radius: 0 0 0 0.25rem;
+    }
+  }
+
+  &-wrapper {
+    transform-origin: auto;
+    position: relative;
+    overflow: hidden;
+    transition: all 200ms ease-in;
+  }
+
+  &-group {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: transparent;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    color: $black;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: $borderRadius;
+    transition: all 350ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
+
+    &:hover {
+      background: $gray-200;
+      cursor: pointer;
+    }
+  }
+}
+
+.dropdown.is-smaller {
+  .dropdown-menu {
+    .dropdown-item {
+      font-size: 0.875rem !important;
+      line-height: 1rem !important;
+    }
+  }
+}
+
+.slide-leave-active,
+.slide-enter-active {
+  transition: 300ms ease-in-out;
+}
+.slide-enter {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slide-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.show-enter-active,
+.show-leave-active {
+  transition: 200ms ease-in-out;
+}
+
+.show-enter-from {
+  transform: translateY(-8px);
+  opacity: 0;
+}
+
+.show-enter-to {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.show-leave-to {
+  transform: translateY(-8px);
+  opacity: 0;
 }

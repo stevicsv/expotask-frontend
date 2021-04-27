@@ -3,12 +3,18 @@
     <template #trigger>
       <h4>Click here</h4>
     </template>
-    <template #menu>
-      <DropdownGroup>
-        <DropdownItem>Test</DropdownItem>
+    <template #multipleMenu="{ isActive, setActive, close }">
+      <DropdownGroup v-show="isActive('main')" key="main" id="main">
+        <DropdownItem>Main</DropdownItem>
+        <DropdownItem @click="setActive('promote')">Promote</DropdownItem>
       </DropdownGroup>
-      <DropdownGroup class="is-secondary">
-        <DropdownItem>Test</DropdownItem>
+      <DropdownGroup v-show="isActive('promote')" key="promote">
+        <DropdownItem @click="setActive('main')">
+          <Icon name="chevron down"/>
+          Back to Main
+        </DropdownItem>
+        <DropdownItem>Moderator</DropdownItem>
+        <DropdownItem @click="close">Member</DropdownItem>
       </DropdownGroup>
     </template>
   </Dropdown>
@@ -16,10 +22,13 @@
 
 <script>
 import { defineComponent } from 'vue';
+import Icon from '@/components/Icon.vue';
 import { Dropdown, DropdownGroup, DropdownItem } from '@/components/Dropdown.vue';
 
 export default defineComponent({
-  components: { Dropdown, DropdownGroup, DropdownItem },
+  components: {
+    Icon, Dropdown, DropdownGroup, DropdownItem,
+  },
 });
 </script>
 

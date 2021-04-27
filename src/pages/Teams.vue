@@ -1,5 +1,5 @@
 <template>
-  <Modal title="Membership" v-if="modalVisible" @close="modalVisible = false">
+  <Modal title="Membership" v-show="modalVisible" @close="modalVisible = false">
     <div class="panel">
       <div class="search-box">
         <Icon name="search" />
@@ -58,7 +58,7 @@
             />
             <h4>{{ team.name }}</h4>
           </div>
-          <Dropdown class="is-smaller">
+          <Dropdown class="is-smaller is-right">
             <template #trigger>
               <Icon name="more" />
             </template>
