@@ -66,7 +66,7 @@ export default defineComponent({
     const user = computed(() => store.state.user);
 
     const logout = async () => {
-      await store.dispatch('logout');
+      await store.dispatch('auth/logout');
       router.push({ name: 'Login' });
     };
 

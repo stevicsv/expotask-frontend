@@ -6,6 +6,7 @@ import store from '@/store';
 import Login from '@/pages/Login.vue';
 import Dashboard from '@/pages/Dashboard.vue';
 import Teams from '@/pages/Teams.vue';
+import ForgotPassword from '@/pages/ForgotPassword.vue';
 
 // Middleware imports
 import auth from './middlewares/auth';
@@ -19,6 +20,11 @@ const routes = [
     meta: {
       middleware: guest,
     },
+  },
+  {
+    path: '/forgot-password',
+    component: ForgotPassword,
+    name: 'ForgotPassword',
   },
   {
     path: '/dashboard',

@@ -1,6 +1,11 @@
 @use '../abstracts/colors' as *;
 
-input {
+label.label {
+  display: block;
+  color: $black;
+}
+
+input.input {
   font-size: 0.875em;
   padding: 0.5rem 0.75rem;
   background-color: #fff;
@@ -11,5 +16,14 @@ input {
     outline: none;
     border: 0.0625rem solid $primary;
     box-shadow: 0 0 0 0.1875rem rgba(244, 107, 62, 0.4);
+  }
+}
+
+span.feedback {
+  display: block;
+  margin-top: 0.5rem;
+
+  &.is-error {
+    color: #d9534f;
   }
 }

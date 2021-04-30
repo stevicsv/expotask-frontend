@@ -17,35 +17,30 @@
       <Logo class="logo mobile-logo" />
 
       <form @submit.prevent="login">
-        <div class="form-group">
-          <label class="form-label">Email address</label>
-          <input class="form-input" type="email" v-model="form.email" />
-          <span class="form-feedback is-error" v-if="form.errors.email">
-            {{ form.errors.email[0] }}
-          </span>
-        </div>
+        <el-input
+          label="Email Address"
+          type="email"
+          v-model="email"
+          :errors="errors.email"
+        />
 
-        <div class="form-group">
-          <label class="form-label with-link">
-            Password
-            <a href="#">Forgot Password?</a>
-          </label>
-          <input class="form-input" type="password" v-model="form.password" />
-          <span class="form-feedback is-error" v-if="form.errors.password">
-            {{ form.errors.password[0] }}
-          </span>
-        </div>
+        <el-input
+          label="Password"
+          :labelLink="{ to: 'ForgotPassword', text: 'Forgot password?' }"
+          type="password"
+          v-model="password"
+          :errors="errors.password"
+        />
 
         <div class="form-group">
           <button
             type="submit"
             role="button"
             class="is-primary"
-            :class="{ 'is-loading': form.loading }"
-            :disabled="form.loading"
+            :class="{ 'is-loading': loading }"
+            :disabled="loading"
           >
-            <div class="loader" v-if="form.loading" />
-            Login
+            <div class="loader" v-if="loading" />Login
           </button>
         </div>
       </form>
@@ -57,21 +52,20 @@
         <div class="horizontal-line"></div>
       </div>
 
-      <p class="copyright">
-        © Copyright {{ new Date().getFullYear() }}, Expotask
-      </p>
+      <p class="copyright">© Copyright {{ new Date().getFullYear() }}, Expotask</p>
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, reactive, toRefs } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import Logo from '@/components/Logo.vue';
+import Input from '@/components/form/Input.vue';
 
 export default defineComponent({
-  components: { Logo },
+  components: { Logo, 'el-input': Input },
   setup() {
     const store = useStore();
     const router = useRouter();
@@ -97,7 +91,7 @@ export default defineComponent({
     };
 
     return {
-      form,
+      ...toRefs(form),
       login,
     };
   },
